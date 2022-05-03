@@ -25,12 +25,13 @@
 <body>
     <header>
         <div id ="head">
-            <h1 class="header__logo"><a href="/top"><img src="images/atlas.png"></a></h1>
+            <h1 class="header__logo"><a href="/top"><img src="{{ asset('images/atlas.png')}}"></a></h1>
+            <!-- 共通で使用する画像もassetで囲わないと表示されなくなる -->
             <div id="user-menu">
                 <div class="dropdown__body">
                     <p>{{Auth::user()->username}}さん</p>
                     <button class="dropdown__btn"><p></p></button>
-                    <figure class="user__icon"><a href="/profile"><img src="images/icon1.png"></figure></a>
+                    <figure class="user__icon"><a href="/profile"><img src="{{ asset('storage/'.auth()->user()->images)}}"></figure></a>
                 </div>
             </div>
         </div>

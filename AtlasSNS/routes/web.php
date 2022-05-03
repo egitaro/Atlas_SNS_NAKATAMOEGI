@@ -35,6 +35,8 @@ Route::get('/top','PostsController@index');
 //プロフィール
 Route::get('/profile','UsersController@profile');
 Route::post('/profile','UsersController@profile');
+Route::get('{id}/others','UsersController@others');
+Route::post('{id}/others','UsersController@others');
 
 //ユーザー検索
 Route::get('/search','UsersController@search');

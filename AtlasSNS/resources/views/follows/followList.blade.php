@@ -3,7 +3,7 @@
 @section('content')
 <div class="list">
       @foreach ($list as $list)
-            <figure class="user__icon"><a href="/profile"><img src="images/icon1.png"></figure></a>
+            <figure class="user__icon"><a href="{{$list->id}}/others"><img src="images/icon1.png"></a></figure>
             <div>{{$list->username}}</div>
       @endforeach
 </div>

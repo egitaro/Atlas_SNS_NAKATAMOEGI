@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\User;  //これかかないとリレーションできない！
+use App\Post;
 
 class UsersController extends Controller
 {
@@ -14,20 +15,32 @@ class UsersController extends Controller
     public function profile(Request $request){
         if($request->isMethod('post')){
 
+            $user = Auth::User();
+
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
             $bio = $request->input('bio');
-            $img = $request->input('img');  //formで設置したname名
+        //  $images = $request->input('images');  //formで設置したname名
 
-            dd($img);
+            User::where('id', Auth::user()->id)->update(['username' => $username,'mail' => $mail,'password' => $password,'bio' => $bio]);
 
-        User::where('id', Auth::user()->id)->update(['username' => $username,'mail' => $mail,'password' => $password,'bio' => $bio]);
+            $images = $request->file('images')->store('public');
+            $user->images = basename($images);
+            $user->save();
 
         return view('users.profile');
         }
         return view('users.profile');
     }
+
+    public function others($id){  //他の人のプロフィールにとぶよ
+
+        $others = User::find($id);
+        $tweet = Post::where('user_id',$id)->get();
+
+        return view('users.others',['others'=>$others,'tweet'=>$tweet]);
+        }
 
 
     public function search(Request $request){

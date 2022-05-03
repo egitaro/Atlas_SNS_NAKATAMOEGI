@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url'=>'/profile','files' => true]) !!}
+{!! Form::open(['url'=>'/profile','enctype' => 'multipart/form-data']) !!}
 
 {{Form::token()}}
 
@@ -22,7 +22,7 @@
 {{ Form::text('bio',Auth::user()->bio,['class' => 'input']) }}</p>
 
 <p>{{ Form::label('icon image') }}
-{{ Form::file('img',null,['class' => 'input']) }}</p>
+{{ Form::file('images',null,['class' => 'input']) }}</p>
 
 <p>{{ Form::submit('更新') }}</p>
 

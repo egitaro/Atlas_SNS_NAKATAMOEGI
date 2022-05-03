@@ -1,4 +1,4 @@
-@extends('layouts.login')
+  @extends('layouts.login')
 
 @section('content')
 
@@ -18,10 +18,14 @@
           <td>{{ $tweet->user->username}}</td>
           <td>{{ $tweet->post }}</td>
 
+          @if ($tweet->'user_id' === Auth::User)
           <td><a class="tweet__icon js-modal-open" post="{{$tweet->post}}" id="{{$tweet->id}}" href="/post/{{$tweet->id}}/update-form"><img src="images/edit.png"></a></td>
 
           <td><a class="tweet__icon" href="/post/{{$tweet->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="images/trash.png"></a></td>
         </tr>
+        @else
+        @endif
+
       @endforeach
     </div>
 

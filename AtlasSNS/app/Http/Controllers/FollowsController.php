@@ -34,7 +34,7 @@ class FollowsController extends Controller
             'followed_id' => $id,
         ]);
 
-        return redirect('/search');  //return back(); も同じ！
+        return back();  //return redirect('/search'); も同じ！
     }
 
     public function unfollow(Request $request)   //フォロー外す機能　投稿の削除機能からもってきた
@@ -46,7 +46,7 @@ class FollowsController extends Controller
         // $id= $request->input('id');
         // Follow::where('followed_id', $id)->delete();
 
-        return redirect('/search');
+        return back();
     }
 
 }
