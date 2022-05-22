@@ -6,31 +6,36 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Requests\UsersFormRequest;  //UsersFormRequestをつかうため
+
 use App\User;  //これかかないとリレーションできない！
 use App\Post;
 
 class UsersController extends Controller
 {
     //
-    public function profile(Request $request){
-        if($request->isMethod('post')){
+    public function profileShow(){
+        return view('users.profile');
+    }
+
+
+    public function profile(UsersFormRequest $request){
 
             $user = Auth::User();
 
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
+            $password_confirmation = $request->input('password_confirmation');
             $bio = $request->input('bio');
         //  $images = $request->input('images');  //formで設置したname名
 
-            User::where('id', Auth::user()->id)->update(['username' => $username,'mail' => $mail,'password' => $password,'bio' => $bio]);
+            User::where('id', Auth::user()->id)->update(['username' => $username,'mail' => $mail,'password' => bcrypt($password),'password_confirmation' => $password_confirmation,'bio' => $bio]);
 
             $images = $request->file('images')->store('public');
             $user->images = basename($images);
             $user->save();
 
-        return view('users.profile');
-        }
         return view('users.profile');
     }
 

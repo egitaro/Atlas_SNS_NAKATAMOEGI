@@ -14,17 +14,16 @@
     <div id ="tweet">
       @foreach ($tweet as $tweet)
         <tr>
-          <td><figure class="user__icon"><img src="images/icon1.png"></figure></td>
+          <td><figure class="user__icon"><img src="{{ asset('storage/'.$tweet->user->images)}}"></figure></td>
           <td>{{ $tweet->user->username}}</td>
           <td>{{ $tweet->post }}</td>
 
-          @if ($tweet->'user_id' === Auth::User)
+          @if ($tweet->user_id === Auth::id())
           <td><a class="tweet__icon js-modal-open" post="{{$tweet->post}}" id="{{$tweet->id}}" href="/post/{{$tweet->id}}/update-form"><img src="images/edit.png"></a></td>
 
           <td><a class="tweet__icon" href="/post/{{$tweet->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="images/trash.png"></a></td>
+          @endif
         </tr>
-        @else
-        @endif
 
       @endforeach
     </div>

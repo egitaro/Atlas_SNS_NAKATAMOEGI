@@ -69,7 +69,7 @@ class RegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'mail' => $data['mail'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($data['password']), //bcryptがパスワードをハッシュ化してくれている！
         ]);
     }
 

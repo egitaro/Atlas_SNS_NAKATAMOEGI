@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'Auth\LoginController@login')->name('home');
 
 //Auth::routes();
 
@@ -33,7 +33,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 Route::get('/top','PostsController@index');
 
 //プロフィール
-Route::get('/profile','UsersController@profile');
+Route::get('/profileShow','UsersController@profileShow');
 Route::post('/profile','UsersController@profile');
 Route::get('{id}/others','UsersController@others');
 Route::post('{id}/others','UsersController@others');

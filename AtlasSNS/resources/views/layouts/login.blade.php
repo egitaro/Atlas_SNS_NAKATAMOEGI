@@ -38,7 +38,7 @@
         <div class="dropdown__wrap">
             <ul class="dropdown__list">
                 <a href="/top"><li class="dropdown__item">HOME</li></a>
-                <a href="/profile"><li class="dropdown__item">プロフィール編集</li></a>
+                <a href="/profileShow"><li class="dropdown__item">プロフィール編集</li></a>
                 <a href="/logout"><li class="dropdown__item">ログアウト</li></a>
             </ul>
         </div>

@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;  //追記
 
+use App\Http\Requests\PostsFormRequest;  //PostsFormRequestをつかうため
+
 use App\Post;  //これかかないとリレーションできない！
 use App\Follow;
 
 class PostsController extends Controller
 {
 
-    public function index(Request $request){
+    public function index(PostsFormRequest $request){
          if($request->isMethod('post')){    //post送信できた
 
             $post = $request->input('post');
@@ -44,7 +46,7 @@ class PostsController extends Controller
     //     return view('posts.index', compact('post'));
     // }
 
-    public function update(Request $request)   //投稿の編集機能 更新
+    public function update(PostsFormRequest $request)   //投稿の編集機能 更新
     {
         $id = $request->input('id');
         $retweet = $request->input('update');
