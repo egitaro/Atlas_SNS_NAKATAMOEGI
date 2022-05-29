@@ -2,15 +2,26 @@
 
 @section('content')
 <div class="list">
-      @foreach ($list as $list)
-            <figure class="user__icon"><a href="{{$list->id}}/others"><img src="images/icon1.png"></a></figure>
-            <div>{{$list->username}}</div>
-      @endforeach
+      <h3>Follow List</h3>
+      <div class="list-item">
+            @foreach ($list as $list)
+                  <figure class="user__icon"><a href="{{$list->id}}/others"><img src="{{ asset('storage/'.$list->images)}}"></a></figure>
+            @endforeach
+      </div>
 </div>
 
-<div class="post">
-@foreach ($post as $post)
-      <div>{{$post->post}}</div>
-@endforeach
+<div id ="tweet">
+      @foreach ($post as $post)
+      <div class="tweet-area">
+            <figure class="user__icon"><img src="{{ asset('storage/'.$post->user->images)}}"></figure>
+          <div class="tweet-box">
+            <p class="tweet-name">{{ $post->user->username}}</p>
+            <p class="tweet-post">{{ $post->post }}</p>
+          </div>
+          <div class="tweet-item">
+            <p>{{ $post->updated_at }}</p>
+          </div>
+      </div>
+      @endforeach
 </div>
 @endsection

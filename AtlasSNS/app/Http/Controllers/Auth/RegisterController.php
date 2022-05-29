@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\RegisterFormRequest;  //RegisterFormRequestをつかうため
+
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -46,14 +48,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
-        ]);
-    }
+
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'username' => 'required|string|max:255',
+    //         'mail' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:4|confirmed',
+    //     ]);
+    // }
 
     /**
      * Create a new user instance after a valid registration.
@@ -73,20 +76,19 @@ class RegisterController extends Controller
         ]);
     }
 
-
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
-
-    public function register(Request $request){
-        if($request->isMethod('post')){
-            $data = $request->input();
-
-            $this->create($data);
-            return redirect('added');
-        }
+    public function registerShow(){  //get送信
         return view('auth.register');
     }
+
+    public function register(RegisterFormRequest $request){  //post送信
+
+            $data = $request->input();
+            $username = $data['username'];
+
+            $this->create($data);
+            return redirect('added') -> with('username',$username);
+        }
+
 
     public function added(){
         return view('auth.added');

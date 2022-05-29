@@ -5,12 +5,10 @@
 <div id="search">
   <form action="/search" method="post">
     @csrf
-    <input type="text" name="keyword" class= "search" placeholder="ユーザー名">
+    <input type="text" name="keyword" class="search-box" placeholder="ユーザー名">
     <input type="submit" value="検索">
   </form>
-  <p>
-    検索ワード:{{$keyword}}
-  </p>
+  <p>検索ワード:{{$keyword}}</p>
 </div>
 
 <div class="result">

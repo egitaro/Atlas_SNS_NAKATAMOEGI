@@ -10,15 +10,18 @@
 
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}
+@if($errors->has('username'))<br><span class="error">{{ $errors->first('username') }}</span> @endif
 
 {{ Form::label('メールアドレス') }}
 {{ Form::text('mail',null,['class' => 'input']) }}
+@if($errors->has('mail'))<br><span class="error">{{ $errors->first('mail') }}</span> @endif
 
 {{ Form::label('パスワード') }}
 {{ Form::text('password',null,['class' => 'input']) }}
+@if($errors->has('password'))<br><span class="error">{{ $errors->first('password') }}</span> @endif
 
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}
+{{ Form::text('password_confirmation',null,['class' => 'input']) }}
 
 {{ Form::submit('登録') }}
 

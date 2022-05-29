@@ -20,17 +20,20 @@
 
 
 //ログインするとき
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('login');  //middlewareのときここ
 Route::post('/login', 'Auth\LoginController@login');
 
+Route::get('/registerShow', 'Auth\RegisterController@registerShow');
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
+Route::group(['middleware' => 'auth'], function () {  //ログインしているときしか見れない！
+
 //ログインしたあと
-Route::get('/top','PostsController@index');
+Route::get('/top','PostsController@indexShow');
 
 //プロフィール
 Route::get('/profileShow','UsersController@profileShow');
@@ -50,8 +53,9 @@ Route::get('/follower-list','FollowsController@followerList');
 Route::get('/logout','Auth\LoginController@logout');
 
 // 投稿するやつ
-Route::post('/index','PostsController@index');
+Route::get('/indexShow','PostsController@indexShow');
 Route::get('/index','PostsController@index');
+Route::post('/index','PostsController@index');
 
 //削除するやつ
 Route::get('post/{id}/delete', 'PostsController@delete');
@@ -62,3 +66,5 @@ Route::post('/update', 'PostsController@update');
 //フォロー機能
 Route::post('/follow', 'FollowsController@follow');
 Route::post('/unfollow', 'FollowsController@unfollow');
+
+});

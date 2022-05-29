@@ -1,10 +1,84 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
-    background: #186AC9;
+    background-color: #186AC9;
+    background-image: linear-gradient(0deg, #F3DD0F 0%, #C4EEC4 25%, #0886DB 60%);
+}
+
+.login {
+    padding: 150px 0 50px 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.login img {
+    width: 40%;
+}
+
+.login p {
+    font-size: 2rem;
+    color: aliceblue;
+}
+
+/* login */
+
+.welcome-area {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+}
+
+.welcome-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-box p {
+    font-size: 1.2rem;
+    color: aliceblue;
+    padding: 40px;
+
+}
+
+.welcome-box a {
+    font-size: 0.8rem;
+    padding: 30px;
+    color: aliceblue;
+}
+
+.label {
+    font-size: 0.8rem;
+    color: aliceblue;
+    text-align: left;
+    margin: 10px 0;
+}
+
+.welcome-box h1 {
+    text-align: right;
+    padding: 10px;
+}
+
+/* いろんなボタンのclassをsubmitで追加だ！*/
+.submit {
+    font-size: 1rem;
+    padding: 2px 2px;
+    line-height: 30px;
+    width: 120px;
+}
+
+.input {
+    border-radius: 5px;
+    border: none;
+    line-height: 35px;
 }

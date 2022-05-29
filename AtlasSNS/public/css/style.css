@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-html {}
-
-body {}
-
 /* header */
 header {
     background: #186AC9;
@@ -22,6 +18,7 @@ header {
 .header__logo {
     height: auto;
     width: 150px;
+    margin-left: 10px;
 }
 
 .header__logo img {
@@ -29,30 +26,85 @@ header {
 }
 
 .user__icon {
+    background-color: #727272;
     height: 45px;
     width: 45px;
+    overflow: hidden;
+    border-radius: 22px;
 }
 
 .user__icon img {
     width: 100%;
-    height: auto;
 }
 
 /* main content */
 #row {
     display: flex;
     flex-wrap: nowrap;
+    width: 100%;
 }
 
 #container {
     width: 78%;
+    min-height: 100vh;
+    /* vhは view height vwは横*/
+    border-right: 1px solid #727272;
 }
 
 #side-bar {
-    height: 32%;
-    border-left: 1px solid #727272;
+    width: 22%;
 }
 
+#confirm {
+    padding: 15px;
+    width: 100%;
+
+}
+
+#confirm p {
+    font-size: 1rem;
+
+}
+
+.side-bar-follow {
+    display: flex;
+}
+
+.side-bar-follow p {
+    margin-right: 50px;
+}
+
+.side-bar-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.side-bar-search {
+    display: flex;
+    padding: 20px;
+    border-top: 1px solid #727272;
+    width: 100%;
+}
+
+.side-bar-search p {
+    margin: auto;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+/* いろんなボタンのclassをsubmitで追加だ！*/
+.submit {
+    font-size: 1rem;
+    padding: 2px 2px;
+    line-height: 30px;
+    width: 120px;
+}
 
 /* dropdown */
 
@@ -61,9 +113,9 @@ header {
     position: relative;
     display: inline-block;
     padding-left: 20px;
-    color: #333;
+    color: aliceblue;
     text-decoration: none;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(0, 0, 0, 0);
     border: none;
     width: 10px;
 }
@@ -73,8 +125,8 @@ header {
     width: 10px;
     height: 10px;
     border: 0;
-    border-bottom: solid 2px #333;
-    border-right: solid 2px #333;
+    border-bottom: solid 2px #fff;
+    border-right: solid 2px #fff;
     position: absolute;
     top: 50%;
     left: 5px;
@@ -86,8 +138,23 @@ header {
 .dropdown__body {
     display: flex;
     align-items: center;
-    width: 150px;
+    width: 200px;
     justify-content: space-between;
+    margin-right: 10px;
+}
+
+.dropdown__body p {
+    font-size: 1.2rem;
+    color: aliceblue;
+    margin-bottom: 0;
+}
+
+.dropdown__body button {
+    margin: 10px;
+}
+
+.dropdown__body img {
+    border-radius: 150px;
 }
 
 /* プルダウンで隠したい */
@@ -95,6 +162,8 @@ header {
 .dropdown__list {
     display: none;
     width: 300px;
+    padding: 0;
+    margin: 0;
 }
 
 .open {
@@ -133,11 +202,10 @@ header {
 
 
 /* tweet */
-/* 投稿のところ */
-
+/* 投稿のボタン */
 .post__icon {
-    height: 90px;
-    width: 90px;
+    height: 80px;
+    width: 80px;
     border: none;
     background-color: white;
 }
@@ -145,42 +213,86 @@ header {
 .post__icon img {
     width: 100%;
     height: auto;
+    margin: 10px;
 }
 
-.tweet__icon {
-    height: 40px;
-    width: 40px;
+.update__icon {
+    height: 30px;
+    width: 30px;
     border: none;
     background-color: white;
 }
 
-.tweet__icon img {
+.update__icon img {
     width: 100%;
     height: auto;
 }
 
+.error {
+    margin-left: 70px;
+}
 
 #post {
     display: flex;
     justify-content: space-between;
-    margin: 60px;
+    padding: 30px 60px;
+    border-bottom: 7px solid gainsboro;
 }
 
+.input {
+    width: 80%;
+    border: none;
+    outline: none;
+}
+
+/* 投稿内容表示全部これ */
 #tweet {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
-    margin: 60px;
+    /* padding: 15px 15px 15px 60px; */
 }
 
-.input {
-    width: 800px;
-    /* border: none; */
-    outline: none;
+.tweet-area {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 15px 15px 100px;
+    margin: 0;
+    border-bottom: 0.7px solid dimgray;
 }
+
+.tweet-box {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 0px 20px;
+}
+
+.tweet-name {
+    font-size: 1rem;
+}
+
+.tweet-post {
+    font-size: 0.9rem;
+}
+
+.tweet-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-item p {
+    font-size: 0.8rem;
+}
+
+.tweet-item-icon {
+    display: flex;
+    justify-content: space-around;
+}
+
 
 /* ここからモーダル */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -217,10 +329,132 @@ header {
     width: 60%;
 }
 
-/* ユーザー検索 */
+/* フォローフォロワーリスト */
+.list {
+    display: flex;
+    padding: 30px 60px;
+    border-bottom: 7px solid gainsboro;
+}
 
+.list h3 {
+    margin: 10px 50px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.list-item figure {
+    margin: 5px;
+}
+
+/* プロフィール */
+.profile-area {
+    display: flex;
+}
+
+.profile-box-icon {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 0;
+}
+
+.profile-box {
+    width: 100%;
+    margin: 30px;
+}
+
+.profile-item {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.profile-label {
+    width: 250px;
+}
+
+.profile-input {
+    width: 400px;
+    height: 40px;
+    background-color: #eee;
+    border: solid 1px #333;
+    padding-left: 1rem;
+}
+
+.profile-file {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    width: 400px;
+    height: 100px;
+    border: solid 1px #333;
+}
+
+.profile-submit {
+    padding: 5px 60px;
+}
+
+.profile-submit-area {
+    display: block;
+    text-align: center;
+}
+
+/* others */
+#others {
+    display: flex;
+    padding: 40px 10px 30px 90px;
+    border-bottom: 7px solid gainsboro;
+}
+
+.others-area {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+}
+
+.others-box-label {
+    margin: 0 10px;
+}
+
+.others-box-label p {
+    font-size: 1.2rem;
+}
+
+.others-box {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 0px 20px;
+}
+
+.others-name {
+    font-size: 1.2rem;
+}
+
+.others-btn-area {
+    display: flex;
+    align-items: flex-end;
+}
+
+.others-btn {
+    padding: 5px 20px;
+}
+
+/* ユーザー検索 */
 #search {
     display: flex;
     justify-content: space-between;
-    margin: 60px;
+    padding: 50px 10px 50px 70px;
+    border-bottom: 7px solid gainsboro;
+}
+
+.search-box {
+    width: 300px;
+    height: 40px;
+    padding: 15px;
 }

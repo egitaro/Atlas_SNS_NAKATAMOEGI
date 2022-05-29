@@ -6,29 +6,55 @@
 
 {{Form::token()}}
 
-<p>{{ Form::label('username') }}
-{{ Form::text('username',Auth::user()->username,['class' => 'input']) }}</p>
-@if($errors->has('username'))<br><span class="error">{{ $errors->first('username') }}</span> @endif
+{{ Form::hidden('id',Auth::user()->id) }}
 
-<p>{{ Form::label('mail address') }}
-{{ Form::text('mail',Auth::user()->mail,['class' => 'input']) }}</p>
-@if($errors->has('mail'))<br><span class="error">{{ $errors->first('mail') }}</span> @endif
+<div class="profile-area">
 
-<p>{{ Form::label('password') }}
-{{ Form::text('password',null,['class' => 'input']) }}</p>
-@if($errors->has('password'))<br><span class="error">{{ $errors->first('password') }}</span> @endif
+  <div class="profile-box-icon">
+    <figure class="user__icon"><img src="{{ asset('storage/'.auth()->user()->images)}}"></figure>
+  </div>
 
-<p>{{ Form::label('password_confirmation') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}</p>
-@if($errors->has('password_confirmation'))<br><span class="error">{{ $errors->first('password_confirmation') }}</span> @endif
+  <div class="profile-box">
 
-<p>{{ Form::label('bio') }}
-{{ Form::text('bio',Auth::user()->bio,['class' => 'input']) }}</p>
+    <div class="profile-item">
+      <p class="profile-label">{{ Form::label('username') }}</p>
+      <p>{{ Form::text('username',Auth::user()->username,['class' => 'profile-input']) }}</p>
+      @if($errors->has('username'))<br><span class="error">{{ $errors->first('username') }}</span> @endif
+    </div>
 
-<p>{{ Form::label('icon image') }}
-{{ Form::file('images',null,['class' => 'input']) }}</p>
+    <div class="profile-item">
+      <p class="profile-label">{{ Form::label('mail address') }}</p>
+      <p>{{ Form::text('mail',Auth::user()->mail,['class' => 'profile-input']) }}</p>
+      @if($errors->has('mail'))<br><span class="error">{{ $errors->first('mail') }}</span> @endif
+    </div>
 
-<p>{{ Form::submit('更新') }}</p>
+    <div class="profile-item">
+      <p class="profile-label">{{ Form::label('password') }}</p>
+      <p>{{ Form::password('password',['class' => 'profile-input']) }}</p>
+      @if($errors->has('password'))<br><span class="error">{{ $errors->first('password') }}</span> @endif
+    </div>
+
+    <div class="profile-item">
+      <p class="profile-label">{{ Form::label('password_confirmation') }}</p>
+      <p>{{ Form::password('password_confirmation',['class' => 'profile-input']) }}</p>
+      @if($errors->has('password_confirmation'))<br><span class="error">{{ $errors->first('password_confirmation') }}</span> @endif
+    </div>
+
+    <div class="profile-item">
+      <p class="profile-label">{{ Form::label('bio') }}</p>
+      <p>{{ Form::text('bio',Auth::user()->bio,['class' => 'profile-input']) }}</p>
+    </div>
+
+    <div class="profile-item">
+      <p class="profile-label">{{ Form::label('icon image') }}</p>
+      <p class="profile-file">{{ Form::file('images',null,['class' => 'profile-input']) }}</p>
+    </div>
+
+    <p class="profile-submit-area">{{Form::submit('更新', ['class'=>'btn btn-danger profile-submit'])}}</p>
+
+  </div>
+
+</div>
 
 {!! Form::close() !!}
 

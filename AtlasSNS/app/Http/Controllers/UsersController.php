@@ -14,29 +14,31 @@ use App\Post;
 class UsersController extends Controller
 {
     //
-    public function profileShow(){
+    public function profileShow(){  //get送信
         return view('users.profile');
     }
 
 
-    public function profile(UsersFormRequest $request){
+    public function profile(UsersFormRequest $request){  //post送信
 
             $user = Auth::User();
 
             $username = $request->input('username');
+
             $mail = $request->input('mail');
             $password = $request->input('password');
-            $password_confirmation = $request->input('password_confirmation');
+            // $password_confirmation = $request->input('password_confirmation');
             $bio = $request->input('bio');
         //  $images = $request->input('images');  //formで設置したname名
 
-            User::where('id', Auth::user()->id)->update(['username' => $username,'mail' => $mail,'password' => bcrypt($password),'password_confirmation' => $password_confirmation,'bio' => $bio]);
+            User::where('id', Auth::user()->id)->update(['username' => $username,'mail' => $mail,'password' => bcrypt($password),'bio' => $bio]);
 
+            if($request -> file('images')){
             $images = $request->file('images')->store('public');
             $user->images = basename($images);
             $user->save();
-
-        return view('users.profile');
+        }
+        return redirect('profileShow');  //redirectにするとルーティングを通るので内容が更新される
     }
 
     public function others($id){  //他の人のプロフィールにとぶよ

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <script type="{{asset('text/javascript')}}" src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')}}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
@@ -10,6 +11,8 @@
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -22,7 +25,9 @@
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
 </head>
+
 <body>
+
     <header>
         <div id ="head">
             <h1 class="header__logo"><a href="/top"><img src="{{ asset('images/atlas.png')}}"></a></h1>
@@ -31,7 +36,7 @@
                 <div class="dropdown__body">
                     <p>{{Auth::user()->username}}さん</p>
                     <button class="dropdown__btn"><p></p></button>
-                    <figure class="user__icon"><a href="/profile"><img src="{{ asset('storage/'.auth()->user()->images)}}"></figure></a>
+                    <figure class="user__icon"><a href="/profileShow"><img src="{{ asset('storage/'.auth()->user()->images)}}"></a></figure>
                 </div>
             </div>
         </div>
@@ -43,27 +48,38 @@
             </ul>
         </div>
     </header>
+
     <div id="row">
+
         <div id="container">
             @yield('content')
         </div>
+
         <div id="side-bar">
             <div id="confirm">
                 <!-- 自分の情報出すときは下の形！ -->
                 <p>{{Auth::user()->username}}さんの</p>
-                <div>
-                <p>フォロー数</p>
-                <p>{{Auth::user()->getFollowCount(Auth::user()->id)}}名</p>
+
+                <div class="side-bar-follow">
+                    <p>フォロー数</p>
+                    <p>{{Auth::user()->getFollowCount(Auth::user()->id)}}名</p>
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数</p>
-                <p>{{Auth::user()->getFollowerCount(Auth::user()->id)}}名</p>
+                <div class="side-bar-btn">
+                    <p class="btn btn-primary submit"><a href="/follow-list">フォローリスト</a></p>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+                <div class="side-bar-follow">
+                    <p>フォロワー数</p>
+                    <p>{{Auth::user()->getFollowerCount(Auth::user()->id)}}名</p>
+                </div>
+                <div class="side-bar-btn">
+                    <p class="btn btn-primary submit"><a href="/follower-list">フォロワーリスト</a></p>
+                </div>
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+            <div class="side-bar-search">
+                <p class="btn btn-primary"><a href="/search">ユーザー検索</a></p>
+            </div>
         </div>
+
     </div>
     <footer>
     </footer>

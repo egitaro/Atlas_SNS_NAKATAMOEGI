@@ -4,17 +4,21 @@
 
 {!! Form::open(['url'=>'/login']) !!}
 
-<p>AtlasSNSへようこそ</p>
+  <div class="welcome-area">
+    <div class="welcome-box">
+    <p>AtlasSNSへようこそ</p>
 
-{{ Form::label('e-mail') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
-{{ Form::password('password',['class' => 'input']) }}
+      {{ Form::label('mail address',null,['class' => 'label']) }}
+      {{ Form::text('mail',null,['class' => 'input']) }}
+      {{ Form::label('password',null,['class' => 'label']) }}
+      {{ Form::password('password',['class' => 'input']) }}
 
-{{ Form::submit('ログイン') }}
+      <h1>{{ Form::submit('LOGIN',['class' => 'btn btn-danger submit']) }}</h1>
 
-<p><a href="/register">新規ユーザーの方はこちら</a></p>
+    <a href="/registerShow">新規ユーザーの方はこちら</a>
+    </div>
+  </div>
 
-{!! Form::close() !!}
+    {!! Form::close() !!}
 
 @endsection
