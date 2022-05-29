@@ -24,7 +24,7 @@
       <form action="/follow" method="post">
       @csrf
       <input type="hidden" name="id" value="{{$others->id}}"></input>
-      <input type="submit" class="btn btn-danger others-btn" value="フォロー">
+      <input type="submit" class="btn btn-primary others-btn" value="フォロー">
       </form>
       @endif
     </div>
