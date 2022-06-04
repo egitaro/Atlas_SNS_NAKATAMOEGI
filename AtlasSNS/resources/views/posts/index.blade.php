@@ -25,7 +25,7 @@
             <p class="tweet-post">{{ $tweet->post }}</p>
           </div>
           <div class="tweet-item">
-            <p>{{ $tweet->updated_at }}</p>
+            <p>{{ $tweet->created_at }}</p>
             <div class="tweet-item-icon">
               @if ($tweet->user_id === Auth::id())
               <a class="update__icon js-modal-open" post="{{$tweet->post}}" id="{{$tweet->id}}" href="/post/{{$tweet->id}}/update-form"><img src="images/edit.png"></a>
@@ -49,7 +49,7 @@
             @csrf
             <input type="hidden" name="id" class="retweet-id" value="">
             <input type="text" name="update" class="retweet" value="">
-            <button type="submit" class="tweet__icon" ><img src="images/edit.png"></button>
+            <button type="submit" class="update__icon modal__icon" ><img src="images/edit.png"></button>
           </form>
         </div><!--modal__inner-->
     </div><!--modal-->

@@ -11,7 +11,7 @@ body {
 }
 
 .login {
-    padding: 150px 0 50px 0;
+    padding: 100px 0 0 0;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -27,6 +27,14 @@ body {
 }
 
 /* login */
+
+.welcome-cushion-top {
+    height: 60px;
+}
+
+.welcome-cushion-bottom {
+    height: 40px;
+}
 
 .welcome-area {
     background-color: rgba(0, 0, 0, 0.3);
@@ -44,10 +52,11 @@ body {
     flex-direction: column;
 }
 
-.welcome-box p {
+.welcome-title {
     font-size: 1.2rem;
     color: aliceblue;
-    padding: 40px;
+    padding: 40px 40px 20px 40px;
+    margin-bottom: 0;
 
 }
 
@@ -69,6 +78,32 @@ body {
     padding: 10px;
 }
 
+.register-title {
+    font-size: 1.2rem;
+    color: aliceblue;
+    padding: 20px 0 10px 0;
+    margin-bottom: 0;
+}
+
+.added-cushion {
+    height: 30px;
+}
+
+.added {
+    flex-direction: column;
+}
+
+.added h1 {
+    padding-bottom: 25px;
+}
+
+.added-title {
+    font-size: 1.2rem;
+    color: aliceblue;
+    padding: 20px 0 10px 0;
+    margin-bottom: 0;
+}
+
 /* いろんなボタンのclassをsubmitで追加だ！*/
 .submit {
     font-size: 1rem;
@@ -81,4 +116,8 @@ body {
     border-radius: 5px;
     border: none;
     line-height: 35px;
+}
+
+a {
+    text-decoration: none;
 }

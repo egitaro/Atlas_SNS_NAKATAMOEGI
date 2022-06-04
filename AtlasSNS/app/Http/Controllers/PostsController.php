@@ -17,7 +17,8 @@ class PostsController extends Controller
     public function indexShow(){ //get送信
 
         $tweet = Post::whereIn('user_id',Auth::user()->follows()->pluck('followed_id'))
-            ->orWhere('user_id', Auth::id())->get();  //条件追加するときはorWhere
+            ->orWhere('user_id', Auth::id())->get()->sortByDesc('created_at');
+            //条件追加するときはorWhere
 
         return view('posts.index',['tweet'=>$tweet]);
     }

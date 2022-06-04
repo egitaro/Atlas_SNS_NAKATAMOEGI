@@ -14,14 +14,14 @@ class FollowsController extends Controller
     //フォローリスト,フォロワーリスト表示
     public function followList(){
         $list=User::whereIn('id',Auth::user()->follows()->pluck('followed_id'))->get();
-        $post=Post::whereIn('user_id',Auth::user()->follows()->pluck('followed_id'))->get();
+        $post=Post::whereIn('user_id',Auth::user()->follows()->pluck('followed_id'))->get()->sortByDesc('created_at');
 
         return view('follows.followList',['list'=>$list,'post'=>$post]);
     }
 
     public function followerList(){
         $list=User::whereIn('id',Auth::user()->followUsers()->pluck('following_id'))->get();
-        $post=Post::whereIn('user_id',Auth::user()->followUsers()->pluck('following_id'))->get();
+        $post=Post::whereIn('user_id',Auth::user()->followUsers()->pluck('following_id'))->get()->sortByDesc('created_at');
         return view('follows.followerList',['list'=>$list,'post'=>$post]);
     }
 

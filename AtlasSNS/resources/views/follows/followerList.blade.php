@@ -19,7 +19,7 @@
             <p class="tweet-post">{{ $post->post }}</p>
           </div>
           <div class="tweet-item">
-            <p>{{ $post->updated_at }}</p>
+            <p>{{ $post->created_at }}</p>
           </div>
       </div>
       @endforeach
