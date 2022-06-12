@@ -6,6 +6,13 @@ $(function () {
   });
 });
 
+// dropdownボタン
+$(function () {
+  $(".dropdown__btn").click(function () {
+    $(this).toggleClass('selected');
+  });
+});
+
 //モーダル
 $(function () {
   $('.js-modal-open').on('click', function () {

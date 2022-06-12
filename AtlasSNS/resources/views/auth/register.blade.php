@@ -20,11 +20,11 @@
     @if($errors->has('mail'))<br><span class="error">{{ $errors->first('mail') }}</span> @endif
 
     {{ Form::label('password',null,['class' => 'label']) }}
-    {{ Form::text('password',null,['class' => 'input']) }}
+    {{ Form::password('password',['class' => 'input']) }}
     @if($errors->has('password'))<br><span class="error">{{ $errors->first('password') }}</span> @endif
 
     {{ Form::label('password confirm',null,['class' => 'label']) }}
-    {{ Form::text('password_confirmation',null,['class' => 'input']) }}
+    {{ Form::password('password_confirmation',['class' => 'input']) }}
 
     <h1>{{ Form::submit('REGISTER',['class' => 'btn btn-danger submit']) }}</h1>
 

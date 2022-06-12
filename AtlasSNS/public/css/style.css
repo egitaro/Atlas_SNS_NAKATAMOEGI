@@ -39,6 +39,7 @@ figure {
 
 .user__icon img {
     width: 100%;
+    height: 100%;
 }
 
 /* main content */
@@ -136,6 +137,10 @@ a:active {
     left: 5px;
     margin-top: -6px;
     transform: rotate(45deg);
+}
+
+.dropdown__btn.selected {
+    transform: rotateX(180deg);
 }
 
 /* プルダウンで隠したくない */
